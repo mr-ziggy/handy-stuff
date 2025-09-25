@@ -17,6 +17,7 @@ systemctl restart ssh.service
 
 # Configure proxy if needed
 # echo 'Acquire::http::Proxy "http://172.16.1.253:3128";' > /etc/apt/apt.conf.d/02proxy
+# echo 'Acquire::http::Proxy "http://172.27.16.253:3128";' > /etc/apt/apt.conf.d/02proxy
 
 # Install/remove some packages
 
