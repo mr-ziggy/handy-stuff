@@ -15,6 +15,9 @@ echo "ClientAliveInterval 120" >> /etc/ssh/sshd_config
 echo "ClientAliveCountMax 2880" >> /etc/ssh/sshd_config
 systemctl restart ssh.service
 
+# Configure proxy if needed
+# echo 'Acquire::http::Proxy "http://172.16.1.253:3128";' > /etc/apt/apt.conf.d/02proxy
+
 # Install/remove some packages
 
 [ $(dmidecode -s system-manufacturer | grep -c "^VMware") == "1" ] && apt-get --purge -y remove os-prober || echo "Not VMWare, skipping..."
