@@ -77,7 +77,11 @@ echo "blacklist floppy" > /etc/modprobe.d/floppy.conf
 
 [ $(dmidecode -s system-manufacturer | grep -c "^VMware") == "1" ] && (echo "blacklist i2c_piix4" > /etc/modprobe.d/smbus.conf) || echo "Not VMWare, skipping..."
 [ $(dmidecode -s system-manufacturer | grep -c "^VMware") == "1" ] && (find /sys -name *max_write_same_blocks -exec echo w {} - - - - 0 \; > /etc/tmpfiles.d/max_write_same_blocks.conf) || echo "Not VMWare, skipping..."
- 
+
+# Remove not needed packages
+
+apt autoremove --purge -y
+
 # Refresh GRUB
  
 depmod -a && update-initramfs -u && update-grub2
