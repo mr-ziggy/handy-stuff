@@ -23,7 +23,7 @@ systemctl restart ssh.service
 
 [ $(dmidecode -s system-manufacturer | grep -c "^VMware") == "1" ] && apt-get --purge -y remove os-prober || echo "Not VMWare, skipping..."
 
-apt-get --purge -y remove rsyslog && apt-get update && apt-get -y install acl bootlogd bzip2 apt-transport-https curl dnsutils htop iftop iotop iptraf less links lsb-release lynx man mc ncdu net-tools psmisc screen sudo sysstat tcpdump telnet traceroute tshark unzip zip lsof socat gnupg2 wget syslog-ng vlan jq
+apt-get --purge -y remove rsyslog && apt-get update && apt-get -y install acl bootlogd bzip2 apt-transport-https curl dnsutils htop iftop iotop iptraf less links lsb-release lynx man mc ncdu net-tools psmisc screen sudo sysstat tcpdump telnet traceroute tshark unzip zip lsof socat gnupg2 wget syslog-ng vlan jq figlet toilet
 
 [ $(dmidecode -s system-manufacturer | grep -c "^VMware") == "1" ] && apt-get -y install open-vm-tools || (echo "Not VMWare, skipping VM Tools..." && apt-get -y install ifenslave)
 
@@ -69,7 +69,8 @@ chmod 775 /etc/profile.d/aliases.sh
  
 > /etc/issue
 > /etc/issue.net
-> /etc/motd
+
+apt install figlet toilet -y && echo " $(hostnamectl hostname | tr '[:lower:]' '[:upper:]') " | toilet -f big -F border -w 1000 | tee /etc/motd
  
 # Get rid of some error messages
   
@@ -80,7 +81,7 @@ echo "blacklist floppy" > /etc/modprobe.d/floppy.conf
 
 # Remove not needed packages
 
-apt autoremove --purge -y
+apt autoremove --purge -y && apt purge ~c -y && apt clean
 
 # Refresh GRUB
  
