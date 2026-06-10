@@ -53,6 +53,11 @@ echo -e "@reboot\troot\tdmesg --console-off" > /etc/cron.d/dmesg-quiet
 echo "export TIME_STYLE=full-iso" > /etc/profile.d/time-style.sh
 chmod 775 /etc/profile.d/time-style.sh
 
+# Set 24-h clock
+
+localect set-locale LC_TIME=en_GB.UTF-8
+
+# Add some handy aliases
 
 > /etc/profile.d/aliases.sh 
 
