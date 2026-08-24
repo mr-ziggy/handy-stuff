@@ -55,7 +55,10 @@ chmod 775 /etc/profile.d/time-style.sh
 
 # Set 24-h clock
 
-localect set-locale LC_TIME=en_GB.UTF-8
+# localectl set-locale LC_TIME=en_GB.UTF-8
+# update-locale
+
+echo LC_TIME=en_GB.UTF-8 >> /etc/environment
 
 # Add some handy aliases
 
