@@ -58,6 +58,7 @@ chmod 775 /etc/profile.d/time-style.sh
 # localectl set-locale LC_TIME=en_GB.UTF-8
 # update-locale
 
+echo LC_ALL=en_US.UTF-8 >> /etc/environment
 echo LC_TIME=en_GB.UTF-8 >> /etc/environment
 
 # Add some handy aliases
