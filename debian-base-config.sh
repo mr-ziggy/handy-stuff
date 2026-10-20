@@ -25,6 +25,9 @@ systemctl restart ssh.service
 
 apt-get --purge -y remove rsyslog && apt-get update && apt-get -y install acl bootlogd bzip2 apt-transport-https curl dnsutils htop iftop iotop iptraf less links lsb-release lynx man mc ncdu net-tools psmisc screen sudo sysstat tcpdump telnet traceroute tshark unzip zip lsof socat gnupg2 wget syslog-ng vlan jq figlet toilet
 
+systemctl enable syslog-ng
+systemctl restart syslog-ng
+
 [ $(dmidecode -s system-manufacturer | grep -c "^VMware") == "1" ] && apt-get -y install open-vm-tools || (echo "Not VMWare, skipping VM Tools..." && apt-get -y install ifenslave)
 
 
